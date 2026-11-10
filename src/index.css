@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-canvas: #F7F7F4;
+  --color-surface: #FFFFFF;
+  --color-line: #E9E8E3;
+  --color-line-strong: #DAD9D3;
+  --color-ink: #17171A;
+  --color-ink-soft: #3D3D42;
+  --color-muted: #6E6E73;
+  --color-faint: #9A9A9F;
+  --color-brand: #7DB9E8;
+  --color-brand-deep: #2A75BE;
+  --color-brand-soft: #EAF4FB;
+  --color-brand-line: #CFE5F7;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-drift: drift 22s linear infinite;
+  --animate-blink: blink 5s steps(1) infinite;
+  @keyframes float {
+    0%, 100% { transform: translateY(0) }
+    50% { transform: translateY(-14px) }
+  }
+  @keyframes drift {
+    from { transform: translateX(-30px) }
+    to { transform: translateX(30px) }
+  }
+  @keyframes blink {
+    0%, 92%, 100% { transform: scaleY(1) }
+    94% { transform: scaleY(0.1) }
+  }
+}
+
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+body { background: var(--color-canvas); color: var(--color-ink); font-family: var(--font-sans); }
+::selection { background: var(--color-brand-line); }
+
+.dotted-link { text-decoration: underline; text-decoration-style: dotted; text-decoration-color: var(--color-faint); text-underline-offset: 3px; }
+.dotted-link:hover { text-decoration-color: var(--color-brand); color: var(--color-brand-deep); }
+
+.scrollbar-thin { scrollbar-width: thin; scrollbar-color: var(--color-line-strong) transparent; }
+
+.bg-grid {
+  background-image: radial-gradient(circle at 1px 1px, #dddcd6 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
